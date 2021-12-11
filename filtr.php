@@ -42,6 +42,10 @@
                 <input type="checkbox" name="Internet" value="Internet" class="check" id="Internet">Интернет<br>
                 <input type="checkbox" name="SMS" value="SMS" class="check" id="SMS">СМС<br>
 
+                <p class="select_table">Выберите оператора</p>
+                <input type="checkbox" name="Tele2" value="Tele2" class="check" id="Tele2">Теле2<br>
+                <input type="checkbox" name="MTC" value="MTC" class="check" id="MTC">МТС<br>
+
                 <input type="submit" name="type[filtr_button]"  id="filtr_button" value="Найти">
             </form>
             <?php
@@ -106,11 +110,25 @@
                 }
 
 
+                if (!empty($_POST['Tele2'])) {$Tele2 = "OR CONCAT(COALESCE(oper1,''), COALESCE(oper2,'')) LIKE '%Теле2%'";} else {
+                    $Tele2 = '';
+                }
+                if (!empty($_POST['MTC'])) {$MTC = "OR CONCAT(COALESCE(oper1,''), COALESCE(oper2,'')) LIKE '%МТС%'";} else {
+                    $MTC = '';
+                }
+
+                if (empty($Tele2 )&&empty($MTC)) {
+                    $Tele2 ="OR 1";
+                }
+
+
+
                 $sql = "SELECT 
 	`Номер_предоставления_услуг`, 
 	`Дата`, 
 	`ФИО`, 
 	`ФИО_клиента`, 
+	CONCAT(COALESCE(oper1,''), COALESCE(oper2,'')) as 'Оператор' ,
 	`Наименование`,
 	u,
 	`Сумма_к_оплате`
@@ -118,15 +136,14 @@ FROM
 	((((`предоставление_услуг`
 			INNER JOIN `сотрудник` ON `предоставление_услуг`.`Номер_сотрудника` = `сотрудник`.`Номер_сотрудника`) 
 			INNER JOIN `клиент` ON `предоставление_услуг`.`Номер_клиента` = `клиент`.`Номер_клиента`) 
-			LEFT JOIN (SELECT `код_оператора`, `тариф`.`Наименование` FROM `операторы` 
+			LEFT JOIN (SELECT `код_оператора`, `операторы`.`Наименование` as oper1, `тариф`.`Наименование` FROM `операторы` 
 				INNER JOIN `тариф` on `операторы`.`Код_тарифа` = `тариф`.`Код_тарифа`) as s1 ON `предоставление_услуг`.`Код_оператора` = s1.`Код_оператора`)
-            LEFT JOIN (SELECT `код_оператора`, `услуга`.`Наименование` as u FROM `операторы`
+            LEFT JOIN (SELECT `код_оператора`,  `операторы`.`Наименование` as oper2, `услуга`.`Наименование` as u FROM `операторы`
                 INNER JOIN `услуга` on `операторы`.`Код_услуги` = `услуга`.`Код_услуги`) as s2 ON `предоставление_услуг`.`Код_оператора` = s2.`Код_оператора`)
-         WHERE $number_usl AND $rabotnik AND $klient AND $summ AND ('1' LIKE '0' $Tarifiche"."  $City "."$Derevhya "." $SvG) AND ('1' LIKE '0' $Internet"."  $SMS)       
-                
+                WHERE $number_usl AND $rabotnik AND $klient AND $summ AND ('1' LIKE '0' $Tarifiche"."  $City "."$Derevhya "." $SvG) AND ('1' LIKE '0' $Internet"."  $SMS) AND ('1' LIKE '0' $Tele2"."  $MTC)
 ORDER BY `Номер_предоставления_услуг`
-
 ";
+
 
 
 
@@ -146,6 +163,7 @@ ORDER BY `Номер_предоставления_услуг`
                             . "</th><th>" . "Сотрудник"
                             . "</th><th>" . "Клиент"
                             . "</th><th>" . "Тариф"
+                            . "</th><th>" . "Оператор"
                             . "</th><th>" . "Отдельная услуга"
                             . "</th><th>" . "Сумма к оплате"
                             . "</th>
@@ -164,6 +182,9 @@ ORDER BY `Номер_предоставления_услуг`
                         padding: 5px; text-align: center'>" . $row["ФИО_клиента"]
                                 . "</td><td style = 'border: 1px solid #dddddd;
                         padding: 5px; text-align: center'>" . $row["Наименование"]
+                                . "</td><td style = 'border: 1px solid #dddddd;
+                        padding: 5px; text-align: center'>" . $row["Оператор"]
+
                                 . "</td><td style = 'border: 1px solid #dddddd;
                         padding: 5px; text-align: center'>" . $row["u"]
                                 . "</td><td style = 'border: 1px solid #dddddd;
