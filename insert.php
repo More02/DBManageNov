@@ -118,7 +118,7 @@ VALUES ($cost_tarif,'$name_tarif')";
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "Данные успешно добавлены";
+    echo "<p style='color: white; text-align: left'>Данные успешно добавлены</p>";
     include('index_add.html');
 } else {
     echo "Ошибка при подключении к бд";

@@ -120,7 +120,7 @@ if ($name_table=='Тариф') {
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "Данные успешно обновлены";
+    echo "<p style='color: white; text-align: left'>Данные успешно обновлены</p>";
     include('update.html');
 } else {
     echo "Ошибка при подключении к бд";

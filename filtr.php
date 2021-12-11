@@ -26,18 +26,22 @@
 
             <form method="post" id="filtr_form">
                 <p class="select_table">Выберите поля для фильтрации</p>
-                <input type="text" placeholder="Номер договора" name="number_dog" class="check2" id="number_dog"><br>
-                <input type="text" placeholder="Введите работника" name="rabotnik" class="check2" id="rabotnik"><br>
+                <input type="text" placeholder="Введите номер предоставления услуг" name="number_usl" class="check2" id="number_usl"><br>
+                <!--<input type="text" placeholder="Введите дату в формате yyyy-mm-dd" name="date" class="check2" id="date"><br>-->
+                <input type="text" placeholder="Введите сотрудника" name="rabotnik" class="check2" id="rabotnik"><br>
                 <input type="text" placeholder="Введите клиента" name="klient" class="check2" id="klient"><br>
-                <input type="text" placeholder="Название продукта" name="nazv_prod" class="check2" id="nazv_prod"><br>
-                <input type="text" placeholder="Номер набора функции" name="number_nab_func" class="check2" id="number_nab_func"><br>
+                <input type="text" placeholder="Введите сумму" name="summ" class="check2" id="summ"><br>
 
-                <p class="select_table">Выберите статус готовности</p>
-                <input type="checkbox" name="Ready" value="Ready" class="check" id="Ready">Готово<br>
-                <input type="checkbox" name="Developing" value="Developing" class="check" id="Developing">В разработке<br>
-                <input type="checkbox" name="Testing" value="Testing" class="check" id="Testing">Тестируется<br>
-                <input type="checkbox" name="OnServer" value="OnServer" class="check" id="OnServer">Размещение на серв<br>
-                <input type="checkbox" name="Podd" value="Podd" class="check" id="Podd">Поддержка<br>
+                <p class="select_table">Выберите Тариф</p>
+                <input type="checkbox" name="Tarifiche" value="Tarifiche" class="check" id="Tarifiche">Тарифище<br>
+                <input type="checkbox" name="City" value="City" class="check" id="City">Городской<br>
+                <input type="checkbox" name="Derevhya" value="Derevhya" class="check" id="Derevhya">Деревенский<br>
+                <input type="checkbox" name="SvG" value="SvG" class="check" id="SvG">Связь G<br>
+
+                <p class="select_table">Выберите отдельную услугу</p>
+                <input type="checkbox" name="Internet" value="Internet" class="check" id="Internet">Интернет<br>
+                <input type="checkbox" name="SMS" value="SMS" class="check" id="SMS">СМС<br>
+
                 <input type="submit" name="type[filtr_button]"  id="filtr_button" value="Найти">
             </form>
             <?php
@@ -56,58 +60,74 @@
                     exit();
                 }
 
-                if (!empty($_POST['number_dog'])) {$number_dog = '`Номер_договора` = '.$_POST['number_dog'];} else {
-                    $number_dog = '1';
+                if (!empty($_POST['number_usl'])) {$number_usl = '`Номер_предоставления_услуг`  = '.$_POST['number_usl'];} else {
+                    $number_usl = '1';
                 }
-                if (!empty($_POST['rabotnik'])) {$rabotnik = "r LIKE '%".$_POST['rabotnik']."%'";} else {
+               // if (!empty($_POST['date'])) {$date = '`Дата` = '.$_POST['date'];} else {
+                  //  $date = '1';
+               // }
+                if (!empty($_POST['rabotnik'])) {$rabotnik = "`ФИО`  LIKE '%".$_POST['rabotnik']."%'";} else {
                     $rabotnik = '1';
                 }
-                if (!empty($_POST['klient'])) {$klient = "k LIKE '%".$_POST['klient']."%'";} else {
+                if (!empty($_POST['klient'])) {$klient = "`ФИО_клиента`  LIKE '%".$_POST['klient']."%'";} else {
                     $klient = '1';
                 }
-                if (!empty($_POST['nazv_prod'])) {$nazv_prod = "`Название_продукта` LIKE '%".$_POST['nazv_prod']."%'";} else {
-                    $nazv_prod = '1';
+                if (!empty($_POST['summ'])) {$summ = "`Сумма_к_оплате` = ".$_POST['summ'];} else {
+                    $summ = '1';
                 }
-                if (!empty($_POST['number_nab_func'])) {$number_nab_func = '`Номер_набора` = '.$_POST['number_nab_func'];} else {
-                    $number_nab_func = '1';
+
+
+                if (!empty($_POST['Tarifiche'])){$Tarifiche = "OR `Наименование` LIKE '%Тарифище%'";} else {
+                    $Tarifiche = '';
                 }
-                if (!empty($_POST['Ready'])){$Ready = "OR `Название_статуса_готовности_проекта` LIKE '%Готово%'";} else {
-                    $Ready = '';
+                if (!empty($_POST['City'])) {$City = "OR `Наименование` LIKE '%Городской%'";} else {
+                    $City = '';
                 }
-                if (!empty($_POST['Developing'])) {$Developing = "OR `Название_статуса_готовности_проекта` LIKE '%В разработке%'";} else {
-                    $Developing = '';
+                if (!empty($_POST['Derevhya'])) {$Derevhya = "OR `Наименование` LIKE '%Деревенский%'";} else {
+                    $Derevhya = '';
                 }
-                if (!empty($_POST['Testing'])) {$Testing = "OR `Название_статуса_готовности_проекта` LIKE '%Тестируется%'";} else {
-                    $Testing = '';
+                if (!empty($_POST['SvG'])){$SvG = "OR `Наименование` LIKE '%Связь G%'"; } else {
+                    $SvG = '';
                 }
-                if (!empty($_POST['OnServer'])){$OnServer = "OR `Название_статуса_готовности_проекта` LIKE '%Размещение на серв%'"; } else {
-                    $OnServer = '';
+                if (empty($Tarifiche)&&empty($City)&&empty($Derevhya)&&empty($SvG)) {
+                    $Tarifiche="OR 1";
                 }
-                if (!empty($_POST['Podd'])) {$Podd = "OR `Название_статуса_готовности_проекта` LIKE '%Поддержка%'";} else {
-                    $Podd = '';
+
+
+                if (!empty($_POST['Internet'])) {$Internet = "OR u LIKE '%интернет%'";} else {
+                    $Internet = '';
                 }
-                if (empty($Podd)&&empty($OnServer)&&empty($Testing)&&empty($Developing)&&empty($Ready)) {
-                    $Ready="OR 1";
+                if (!empty($_POST['SMS'])) {$SMS = "OR u LIKE '%СМС%'";} else {
+                    $SMS = '';
+                }
+
+                if (empty($Internet)&&empty($SMS)) {
+                    $Internet="OR 1";
                 }
 
 
                 $sql = "SELECT 
-	`Номер_договора`,
-	r,
-	k,
- `Название_продукта`,
-	`Номер_набора`  ,
-	`Название_статуса_готовности_проекта` 
-    FROM 
-	((((`договор`  
-		INNER JOIN (SELECT `техническое_задание`.`Номер_технического_задания`, `техническое_задание`.`номер_работника`, concat(`Фамилия_работника`,' ', `Имя_работника`,' ', `Отчество_работника`) as r FROM `техническое_задание`
-			INNER JOIN `работник` on `техническое_задание`.`Номер_работника` = `работник`.`Номер_работника`) as s1 ON `договор`.`Номер_технического_задания` = s1.`Номер_технического_задания`)
-		INNER JOIN (SELECT `техническое_задание`.`Номер_технического_задания`, `техническое_задание`.`Номер_клиента`, concat(`Фамилия_клиента`,' ',`Имя_клиента`,' ',`Отчество_клиента`) as k FROM `техническое_задание`
-			INNER JOIN `клиент` on `техническое_задание`.`Номер_клиента`=`клиент`.`Номер_клиента`) as s2 ON `договор`.`Номер_технического_задания`=s2.`Номер_технического_задания`)
-		INNER JOIN (SELECT `техническое_задание`.`Номер_технического_задания`, `техническое_задание`.`Номер_набора_функционала`, `Номер_набора` FROM `техническое_задание`INNER JOIN `набор_функционала` on `техническое_задание`.`Номер_набора_функционала`=`набор_функционала`.`Номер_набора_функционала`) as s3 ON `договор`.`Номер_технического_задания`=s3.`Номер_технического_задания`)
-		INNER JOIN `готовность_проекта` ON `договор`.`Номер_статуса_готовности_проекта`=`готовность_проекта`.`Номер_статуса_готовности_проекта`)
-WHERE $number_dog AND $rabotnik AND $klient AND $nazv_prod AND $number_nab_func AND ('1' LIKE '0' $Ready"."  $Developing "."$Testing "." $OnServer "." $Podd)
-ORDER BY `Номер_договора`";
+	`Номер_предоставления_услуг`, 
+	`Дата`, 
+	`ФИО`, 
+	`ФИО_клиента`, 
+	`Наименование`,
+	u,
+	`Сумма_к_оплате`
+FROM 
+	((((`предоставление_услуг`
+			INNER JOIN `сотрудник` ON `предоставление_услуг`.`Номер_сотрудника` = `сотрудник`.`Номер_сотрудника`) 
+			INNER JOIN `клиент` ON `предоставление_услуг`.`Номер_клиента` = `клиент`.`Номер_клиента`) 
+			LEFT JOIN (SELECT `код_оператора`, `тариф`.`Наименование` FROM `операторы` 
+				INNER JOIN `тариф` on `операторы`.`Код_тарифа` = `тариф`.`Код_тарифа`) as s1 ON `предоставление_услуг`.`Код_оператора` = s1.`Код_оператора`)
+            LEFT JOIN (SELECT `код_оператора`, `услуга`.`Наименование` as u FROM `операторы`
+                INNER JOIN `услуга` on `операторы`.`Код_услуги` = `услуга`.`Код_услуги`) as s2 ON `предоставление_услуг`.`Код_оператора` = s2.`Код_оператора`)
+         WHERE $number_usl AND $rabotnik AND $klient AND $summ AND ('1' LIKE '0' $Tarifiche"."  $City "."$Derevhya "." $SvG) AND ('1' LIKE '0' $Internet"."  $SMS)       
+                
+ORDER BY `Номер_предоставления_услуг`
+
+";
+
 
 
 //echo $sql;
@@ -122,11 +142,12 @@ ORDER BY `Номер_договора`";
                         border-collapse: collapse;'>
                         <tbody><tr>
                    <th>" . "Номер"
-                            . "</th><th>" . "Работник"
+                            . "</th><th>" . "Дата"
+                            . "</th><th>" . "Сотрудник"
                             . "</th><th>" . "Клиент"
-                            . "</th><th>" . "Название продукта"
-                            . "</th><th>" . "Номер набора функций"
-                            . "</th><th>" . "Статус проекта"
+                            . "</th><th>" . "Тариф"
+                            . "</th><th>" . "Отдельная услуга"
+                            . "</th><th>" . "Сумма к оплате"
                             . "</th>
                  </tr>";
                         // output data of each row
@@ -134,17 +155,19 @@ ORDER BY `Номер_договора`";
 
                             echo
                                 "<tr><td style = 'border: 1px solid #dddddd;
-                        padding: 5px; text-align: center'>" . $row["Номер_договора"]
+                        padding: 5px; text-align: center'>" . $row["Номер_предоставления_услуг"]
                                 . "</td><td style = 'border: 1px solid #dddddd;
-                        padding: 5px; text-align: center'>" . $row["r"]
+                        padding: 5px; text-align: center'>" . $row["Дата"]
                                 . "</td><td style = 'border: 1px solid #dddddd;
-                        padding: 5px; text-align: center'>" . $row["k"]
+                        padding: 5px; text-align: center'>" . $row["ФИО"]
                                 . "</td><td style = 'border: 1px solid #dddddd;
-                        padding: 5px; text-align: center'>" . $row["Название_продукта"]
+                        padding: 5px; text-align: center'>" . $row["ФИО_клиента"]
                                 . "</td><td style = 'border: 1px solid #dddddd;
-                        padding: 5px; text-align: center'>" . $row["Номер_набора"]
+                        padding: 5px; text-align: center'>" . $row["Наименование"]
                                 . "</td><td style = 'border: 1px solid #dddddd;
-                        padding: 5px; text-align: center'>" . $row["Название_статуса_готовности_проекта"]
+                        padding: 5px; text-align: center'>" . $row["u"]
+                                . "</td><td style = 'border: 1px solid #dddddd;
+                        padding: 5px; text-align: center'>" . $row["Сумма_к_оплате"]
                                 . "</td></tr>";
                         }
                         echo "</tbody></table>";

@@ -84,7 +84,7 @@ if ($name_table=='Тариф') {
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "Данные успешно удалены";
+    echo "<p style='color: white; text-align: left'>Данные успешно удалены</p>";
     include('delete.html');
 } else {
     echo "Ошибка при подключении к бд";
