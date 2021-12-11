@@ -25,7 +25,7 @@
             <p>Обновление данных в таблице</p>
             <p class="select_table">Выберите таблицу для обновления данных:</p>
             <form method="post">
-                <select name="add_table" id="add_table">
+                <select name="update_table" id="update_table">
                     <option value="Договор">Договор</option>
                     <option value="Клиент">Клиент</option>
                     <option value="Предоставление_услуг">Предоставление услуг</option>
@@ -51,9 +51,9 @@
             <form method="post" action="update.php">
                 <div id="update_client">
                     <input type="text" placeholder="Номер клиента для обновления" name="number_client"><br>
-                    <input type="text" placeholder="ФИО Клиента" name="new_fio"><br>
-                    <input type="text" placeholder="Адрес клиента" name="new_addres"><br>
-                    <input type="text" placeholder="Телефон клиента" name="new_number"><br>
+                    <input type="text" placeholder="Новое ФИО Клиента" name="fio"><br>
+                    <input type="text" placeholder="Новый адрес клиента" name="addres"><br>
+                    <input type="text" placeholder="Новый телефон клиента" name="telf"><br>
                     <input type="submit" value="Обновить">
                     <input type="text" name="name_update_table_client" style="visibility: hidden"
                            id="name_update_table_client"><br>
@@ -61,76 +61,83 @@
             </form>
 
             <form method="post" action="update.php">
-                <div id="update_type_function">
-                    <input type="text" placeholder="Номер функции для обновления" name="number_function"><br>
-                    <input type="text" placeholder="Новое описание функции" name="type_function"><br>
-                    <input type="submit" value="Обновить">
-                    <input type="text" name="name_update_table_function" style="visibility: hidden"
-                           id="name_update_table_function"><br>
-                </div>
-            </form>
-            <form method="post" action="update.php">
-                <div id="update_name_status_proj">
-                    <input type="text" placeholder="Номер статуса готовности проекта для обновления" name="number_status_proj"><br>
-                    <input type="text" placeholder="Новое название статуса готовности проекта" name="name_status_proj"><br>
-                    <input type="submit" value="Обновить">
-                    <input type="text" name="name_update_table_status_proj" style="visibility: hidden"
-                           id="name_update_table_status_proj"><br>
-                </div>
-            </form>
-            <form method="post" action="update.php">
-                <div id="update_nabor_function">
-                    <input type="text" placeholder="Номер набора функционала для обновления" name="number_nabor_func"><br>
-                    <input type="text" placeholder="Новый номер набора" name="number_nabor"><br>
-                    <input type="text" placeholder="Новый комментарий к функционалу" name="komment_to_function"><br>
-                    <input type="text" placeholder="Новый номер функции" name="number_function"><br>
-                    <input type="submit" value="Обновить">
-                    <input type="text" name="name_update_table_status_nabor_function" style="visibility: hidden"
-                           id="name_update_table_status_nabor_function"><br>
-                </div>
-            </form>
-            <form method="post" action="update.php">
-                <div id="update_otdel">
-                    <input type="text" placeholder="Номер отдела для обновления" name="number_otdel"><br>
-                    <input type="text" placeholder="Новое название отдела" name="name_otdel"><br>
-                    <input type="submit" value="Обновить">
-                    <input type="text" name="name_update_table_otdel" style="visibility: hidden"
-                           id="name_update_table_otdel"><br>
-                </div>
-            </form>
-            <form method="post" action="update.php">
-                <div id="update_rabotnik">
-                    <input type="text" placeholder="Номер работника для обновления" name="number_work"><br>
-                    <input type="text" placeholder="Новый номер специализации" name="number_spec"><br>
-                    <input type="text" placeholder="Новый номер отдела" name="number_otdel"><br>
-                    <input type="text" placeholder="Новая фамилия работника" name="surname_work"><br>
-                    <input type="text" placeholder="Новое имя работника" name="name_work"><br>
-                    <input type="text" placeholder="Новое отчество работника" name="last_name_work"><br>
-                    <input type="text" placeholder="Новое количество открытых проектов" name="number_open_proj"><br>
-                    <input type="submit" value="Обновить">
-                    <input type="text" name="name_update_table_rabotnik" style="visibility: hidden"
-                           id="name_update_table_rabotnik"><br>
-                </div>
-            </form>
-            <form method="post" action="update.php">
-                <div id="update_spec">
-                    <input type="text" placeholder="Номер специализации для обновления" name="number_spec"><br>
-                    <input type="text" placeholder="Название специализации" name="name_spec"><br>
-                    <input type="submit" value="Обновить">
-                    <input type="text" name="name_update_spec" style="visibility: hidden"
-                           id="name_update_spec"><br>
-                </div>
-            </form>
-            <form method="post" action="update.php">
-                <div id="update_tech_zad">
-                    <input type="text" placeholder="Номер технического задания для обновления" name="number_tz"><br>
-                    <input type="text" placeholder="Новый комментарий" name="komment_to_tz"><br>
-                    <input type="text" placeholder="Новый номер работника" name="number_rabotnik"><br>
-                    <input type="text" placeholder="Новый номер набора функционала" name="number_nub_func"><br>
+                <div id="predostav_uslug">
+                    <input type="text" placeholder="Номер предоставления услуг для обновления" name="number_predostav_uclug"><br>
+                    <input type="text" placeholder="Новый номер сотрудника" name="number_work"><br>
                     <input type="text" placeholder="Новый номер клиента" name="number_klient"><br>
+                    <input type="text" placeholder="Новая дата в формате yyyy-mm-dd" name="date_update"><br>
+                    <input type="text" placeholder="Новая сумма к оплате" name="summ"><br>
+                    <input type="text" placeholder="Новый комментарий" name="komment"><br>
+                    <input type="text" placeholder="Ноый номер договора" name="number_dogovor"><br>
+                    <input type="text" placeholder="Новый код оператора" name="kod_operator"><br>
                     <input type="submit" value="Обновить">
-                    <input type="text" name="name_update_table_tech_zad" style="visibility: hidden"
-                           id="name_update_table_tech_zad"><br>
+                    <input type="text" name="name_update_table_predostav_uslug" style="visibility: hidden"
+                           id="name_update_table_predostav_uslug"><br>
+                </div>
+            </form>
+            <form method="post" action="update.php">
+                <div id="update_name_operator">
+                    <input type="text" placeholder="Код оператора для обновления" name="kode_operator"><br>
+                    <input type="text" placeholder="Новое наименование" name="name_oper"><br>
+                    <input type="text" placeholder="Новый код услуги" name="kode_uslugi"><br>
+                    <input type="text" placeholder="Новый код тарифа" name="kode_tarifa"><br>
+                    <input type="text" placeholder="Новый код услуги тарифа" name="kode_uslugi_tarifa"><br>
+                    <input type="submit" value="Обновить">
+                    <input type="text" name="name_update_table_operator" style="visibility: hidden"
+                           id="name_update_table_operator"><br>
+                </div>
+            </form>
+            <form method="post" action="update.php">
+                <div id="update_salon">
+                    <input type="text" placeholder="Номер салона для обновления" name="number_salon"><br>
+                    <input type="text" placeholder="Новый адрес" name="address_salon"><br>
+                    <input type="text" placeholder="Новый район" name="raion_salona"><br>
+                    <input type="submit" value="Обновить">
+                    <input type="text" name="name_update_table_salon" style="visibility: hidden"
+                           id="name_update_table_salon"><br>
+                </div>
+            </form>
+            <form method="post" action="update.php">
+                <div id="update_sotrudnik">
+                    <input type="text" placeholder="Номер сотрудника для обновления" name="number_sotrudnik"><br>
+                    <input type="text" placeholder="Новое ФИО" name="fio_worker"><br>
+                    <input type="text" placeholder="Новая дата рождения в формате yyyy-mm-dd" name="date_birth_worker"><br>
+                    <input type="text" placeholder="Новый номер салона" name="number_salon"><br>
+                    <input type="text" placeholder="Новое количество договоров" name="kolvo_dogovor"><br>
+                    <input type="submit" value="Обновить">
+                    <input type="text" name="name_update_table_sotrudnik" style="visibility: hidden"
+                           id="name_update_table_sotrudnik"><br>
+                </div>
+            </form>
+            <form method="post" action="update.php">
+                <div id="update_uslug_for_tarif">
+                    <input type="text" placeholder="Код услуги тарифа для обновления" name="kode_uslugi_tarifa"><br>
+                    <input type="text" placeholder="Новое название" name="name_uslug"><br>
+                    <input type="text" placeholder="Новое количество" name="kolvo_uslug"><br>
+                    <input type="text" placeholder="Новая единица измерения" name="ed_izm"><br>
+                    <input type="submit" value="Обновить">
+                    <input type="text" name="name_update_table_uslug_tarif" style="visibility: hidden"
+                           id="name_update_table_uslug_tarif"><br>
+                </div>
+            </form>
+            <form method="post" action="update.php">
+                <div id="update_usluga">
+                    <input type="text" placeholder="Код услуги для обновления" name="kode_uslugi"><br>
+                    <input type="text" placeholder="Новое наименование" name="name_uslugi"><br>
+                    <input type="text" placeholder="Новая стоимость" name="cost"><br>
+                    <input type="submit" value="Обновить">
+                    <input type="text" name="name_update_table_usluga" style="visibility: hidden"
+                           id="name_update_table_usluga"><br>
+                </div>
+            </form>
+            <form method="post" action="update.php">
+                <div id="update_tarif">
+                    <input type="text" placeholder="Код тарифа для обновления" name="kode_tarif"><br>
+                    <input type="text" placeholder="Новая стоимость тарифа" name="cost_tarif"><br>
+                    <input type="text" placeholder="Новое наименование" name="name_tarif"><br>
+                    <input type="submit" value="Обновить">
+                    <input type="text" name="name_update_table_tarif" style="visibility: hidden"
+                           id="name_update_table_tarif"><br>
                 </div>
             </form>
             <button id="update_button" type="submit">Отобразить поля для обновления</button>
@@ -147,43 +154,43 @@
                     margin-top: -41px;
                     margin-left: 500px;
                 }
-                #update_type_function {
+                #predostav_uslug {
                     float: right;
                     position: absolute;
                     margin-top: -41px;
                     margin-left: 500px;
                 }
-                #update_name_status_proj {
+                #update_name_operator {
                     float: right;
                     position: absolute;
                     margin-top: -41px;
                     margin-left: 500px;
                 }
-                #update_nabor_function {
+                #update_salon {
                     float: right;
                     position: absolute;
                     margin-top: -41px;
                     margin-left: 500px;
                 }
-                #update_otdel {
+                #update_sotrudnik {
                     float: right;
                     position: absolute;
                     margin-top: -41px;
                     margin-left: 500px;
                 }
-                #update_rabotnik {
+                #update_uslug_for_tarif {
                     float: right;
                     position: absolute;
                     margin-top: -41px;
                     margin-left: 500px;
                 }
-                #update_spec {
+                #update_usluga {
                     float: right;
                     position: absolute;
                     margin-top: -41px;
                     margin-left: 500px;
                 }
-                #update_tech_zad {
+                #update_tarif {
                     float: right;
                     position: absolute;
                     margin-top: -41px;
@@ -194,13 +201,13 @@
         <script>
             document.getElementById('update_dogovor').style.visibility = 'hidden';
             document.getElementById('update_client').style.visibility = 'hidden';
-            document.getElementById('update_type_function').style.visibility = 'hidden';
-            document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-            document.getElementById('update_nabor_function').style.visibility = 'hidden';
-            document.getElementById('update_otdel').style.visibility = 'hidden';
-            document.getElementById('update_rabotnik').style.visibility = 'hidden';
-            document.getElementById('update_spec').style.visibility = 'hidden';
-            document.getElementById('update_tech_zad').style.visibility = 'hidden';
+            document.getElementById('predostav_uslug').style.visibility = 'hidden';
+            document.getElementById('update_name_operator').style.visibility = 'hidden';
+            document.getElementById('update_salon').style.visibility = 'hidden';
+            document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+            document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+            document.getElementById('update_usluga').style.visibility = 'hidden';
+            document.getElementById('update_tarif').style.visibility = 'hidden';
 
             let a=document.getElementById('update_table').value;
 
@@ -208,113 +215,115 @@
 
 
             document.getElementById('update_button').onclick=function () {
+
                 //alert (elt.options[elt.selectedIndex].text);
                 //alert(a);
                 if (elt.options[elt.selectedIndex].text=="Договор") {
                     document.getElementById('name_update_table_dogovor').value = document.getElementById('update_table').options[elt.selectedIndex].value;
                     document.getElementById('update_dogovor').style.visibility = 'visible';
                     document.getElementById('update_client').style.visibility = 'hidden';
-                    document.getElementById('update_type_function').style.visibility = 'hidden';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
+                    document.getElementById('name_update_table').value = document.getElementById('update_table').options[elt.selectedIndex].value;
                 }
                 if (elt.options[elt.selectedIndex].text=="Клиент") {
                     document.getElementById('name_update_table_client').value = document.getElementById('update_table').options[elt.selectedIndex].value;
                     document.getElementById('update_client').style.visibility = 'visible';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
-                    document.getElementById('update_type_function').style.visibility = 'hidden';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
                 }
-                if (elt.options[elt.selectedIndex].text=="Вид функционала") {
-                    document.getElementById('name_update_table_function').value = document.getElementById('update_table').options[elt.selectedIndex].value;
-                    document.getElementById('update_type_function').style.visibility = 'visible';
+                if (elt.options[elt.selectedIndex].text=="Предоставление услуг") {
+                    document.getElementById('name_update_table_predostav_uslug').value = document.getElementById('update_table').options[elt.selectedIndex].value;
+                    document.getElementById('predostav_uslug').style.visibility = 'visible';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
                     document.getElementById('update_client').style.visibility = 'hidden';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
                 }
-                if (elt.options[elt.selectedIndex].text=="Готовность проекта") {
-                    document.getElementById('name_update_table_status_proj').value = document.getElementById('update_table').options[elt.selectedIndex].value;
-                    document.getElementById('update_name_status_proj').style.visibility = 'visible';
-                    document.getElementById('update_type_function').style.visibility = 'hidden';
+                if (elt.options[elt.selectedIndex].text=="Операторы") {
+                    document.getElementById('name_update_table_operator').value = document.getElementById('update_table').options[elt.selectedIndex].value;
+                    document.getElementById('update_name_operator').style.visibility = 'visible';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
                     document.getElementById('update_client').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
                 }
-                if (elt.options[elt.selectedIndex].text=="Набор функционала") {
-                    document.getElementById('name_update_table_status_nabor_function').value = document.getElementById('update_table').options[elt.selectedIndex].value;
-                    document.getElementById('update_nabor_function').style.visibility = 'visible';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_type_function').style.visibility = 'hidden';
+                if (elt.options[elt.selectedIndex].text=="Салон") {
+                    document.getElementById('name_update_table_salon').value = document.getElementById('update_table').options[elt.selectedIndex].value;
+                    document.getElementById('update_salon').style.visibility = 'visible';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
                     document.getElementById('update_client').style.visibility = 'hidden';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
                 }
-                if (elt.options[elt.selectedIndex].text=="Отдел") {
-                    document.getElementById('name_update_table_otdel').value = document.getElementById('update_table').options[elt.selectedIndex].value;
-                    document.getElementById('update_otdel').style.visibility = 'visible';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_type_function').style.visibility = 'hidden';
+                if (elt.options[elt.selectedIndex].text=="Сотрудник") {
+                    document.getElementById('name_update_table_sotrudnik').value = document.getElementById('update_table').options[elt.selectedIndex].value;
+                    document.getElementById('update_sotrudnik').style.visibility = 'visible';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
                     document.getElementById('update_client').style.visibility = 'hidden';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
                 }
-                if (elt.options[elt.selectedIndex].text=="Работник") {
-                    document.getElementById('name_update_table_rabotnik').value = document.getElementById('update_table').options[elt.selectedIndex].value;
-                    document.getElementById('update_rabotnik').style.visibility = 'visible';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_type_function').style.visibility = 'hidden';
+                if (elt.options[elt.selectedIndex].text=="Услуги для тарифа") {
+                    document.getElementById('name_update_table_uslug_tarif').value = document.getElementById('update_table').options[elt.selectedIndex].value;
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'visible';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
                     document.getElementById('update_client').style.visibility = 'hidden';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
                 }
-                if (elt.options[elt.selectedIndex].text=="Специализация") {
-                    document.getElementById('name_update_spec').value = document.getElementById('update_table').options[elt.selectedIndex].value;
-                    document.getElementById('update_spec').style.visibility = 'visible';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_type_function').style.visibility = 'hidden';
+                if (elt.options[elt.selectedIndex].text=="Услуга") {
+                    document.getElementById('name_update_table_usluga').value = document.getElementById('update_table').options[elt.selectedIndex].value;
+                    document.getElementById('update_usluga').style.visibility = 'visible';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
                     document.getElementById('update_client').style.visibility = 'hidden';
-                    document.getElementById('update_tech_zad').style.visibility = 'hidden';
+                    document.getElementById('update_tarif').style.visibility = 'hidden';
                 }
-                if (elt.options[elt.selectedIndex].text=="Техническое задание") {
-                    document.getElementById('name_update_table_tech_zad').value = document.getElementById('update_table').options[elt.selectedIndex].value;
-                    document.getElementById('update_tech_zad').style.visibility = 'visible';
-                    document.getElementById('update_spec').style.visibility = 'hidden';
-                    document.getElementById('update_rabotnik').style.visibility = 'hidden';
-                    document.getElementById('update_otdel').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
-                    document.getElementById('update_name_status_proj').style.visibility = 'hidden';
-                    document.getElementById('update_nabor_function').style.visibility = 'hidden';
+                if (elt.options[elt.selectedIndex].text=="Тариф") {
+                    document.getElementById('name_update_table_tarif').value = document.getElementById('update_table').options[elt.selectedIndex].value;
+                    document.getElementById('update_tarif').style.visibility = 'visible';
+                    document.getElementById('update_usluga').style.visibility = 'hidden';
+                    document.getElementById('update_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('update_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('update_salon').style.visibility = 'hidden';
+                    document.getElementById('update_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
                     document.getElementById('update_dogovor').style.visibility = 'hidden';
                     document.getElementById('update_client').style.visibility = 'hidden';
                 }

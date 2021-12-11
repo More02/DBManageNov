@@ -50,9 +50,9 @@ if ($name_table=='Клиент') {
     $sql = "DELETE FROM `клиент` WHERE `Номер_клиента`=$number_client";
 }
 if ($name_table=='Предоставление_услуг') {
-    $name_predostav_uclug = $_POST['name_predostav_uclug'];
+    $number_predostav_uclug = $_POST['number_predostav_uclug'];
     $sql = "DELETE FROM `предоставление_услуг` WHERE `Номер_предоставления_услуг`=
-'$name_predostav_uclug'";
+$number_predostav_uclug";
 }
 if ($name_table=='Операторы') {
     $kode_operator = $_POST['kode_operator'];
