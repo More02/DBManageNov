@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Предоставление услуг телефонной связи</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<?php require_once('ConnectDB.php'); ?>
+<div id="page">
+    <div id="header">
+
+        <h1>Предоставление услуг телефонной связи</h1>
+        <h2>Регистрация</h2>
+    </div>
+    <div id="middle">
+        <div id="add">
+            <form method="post" id="register_form" action="register.php" style="margin: 0 auto; text-align: center">
+                <input type="text" placeholder="Имя" name="name"><br>
+                <input type="text" placeholder="E-mail" name="email"><br>
+                <input type="password" placeholder="Пароль" name="password"><br>
+                <input type="submit" name="type[register_butt]"  id="register_butt" value="Регистрация">
+                <input type="submit" name="type[login_butt]"  id="login_butt" value="Войти" style="margin-top: 20px">
+            </form>
+
+        </div>
+
+
+
+    </div>
+    <div id="footer">
+
+    </div>
+</div>
+
+</body>
+</html>

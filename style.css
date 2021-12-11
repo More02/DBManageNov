@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Shancallunaregular;
+    src: url(Shancallunaregular.ttf);
+}
+
+
+#page{
+    width: 80%;
+    height: 100%;
+    min-height: 800px;
+    background: #3DACDA;
+    margin: 0 auto;
+    margin-top: -22px;
+    margin-bottom: -10px;
+    color: white;
+}
+body {
+    background: #3DACDA;
+    alignment: center;
+    font-family: Shancallunaregular,sans-serif;
+}
+#header {
+    text-align: center;
+}
+ul {
+    float:right;
+    list-style-type: none;
+    height: 60px;
+    margin: 0 auto;
+    color: white;
+
+}
+li {
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 40px;
+    position: relative;
+    transform: translateY(80%);
+}
+h1 {
+    padding-top: 90px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+p {
+    font-size: 20px;
+    text-align: center;
+}
+.select_table {
+    font-size: 15px;
+    text-align: left;
+}
+
+select {
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+}
+
+#add {
+    padding-left: 50px;
+}
+#delete {
+    padding-left: 50px;
+}
+#update {
+    padding-left: 50px;
+}
+#look {
+    padding-left: 50px;
+}
+#add_dogovor {
+    float: right;
+    position: absolute;
+    margin-top: -41px;
+    margin-left: 500px;
+}
+#add_client {
+    float: right;
+    position: absolute;
+    margin-top: -41px;
+    margin-left: 500px;
+}
+
+
+
+input {
+    margin-right:50px;
+    margin-left:50px;
+    width: 500px;
+    height: 40px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+button {
+    background: white;
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    margin-top: 20px;
+}

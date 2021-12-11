@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Предоставление услуг телефонной связи</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<?php require_once('ConnectDB.php'); ?>
+<div id="page">
+    <div id="header">
+
+        <ul>
+            <li><a href="index_add.html">Добавление</a></li>
+            <li><a href="delete.html">Удаление</a></li>
+            <li><a href="update.html">Обновление</a></li>
+            <li><a href="look.php">Просмотр</a></li>
+            <li><a href="filtr.php">Фильтрация</a></li>
+        </ul>
+
+        <h1>Предоставление услуг телефонной связи</h1>
+    </div>
+    <div id="middle">
+        <div id="add">
+            <p>Добавление данных в базу</p>
+            <p class="select_table">Выберите таблицу для добавления данных:</p>
+            <form method="post" id="add_form" action="insert.php">
+                <select name="add_table" id="add_table">
+                    <option value="Договор">Договор</option>
+                    <option value="Клиент">Клиент</option>
+                    <option value="Предоставление_услуг">Предоставление услуг</option>
+                    <option value="Операторы">Операторы</option>
+                    <option value="Салон">Салон</option>
+                    <option value="Сотрудник">Сотрудник</option>
+                    <option value="Услуги_для_тарифа">Услуги для тарифа</option>
+                    <option value="Услуга">Услуга</option>
+                    <option value="Тариф">Тариф</option>
+                </select>
+
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_dogovor">
+                    <input type="text" placeholder="Документ" name="document"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_dogovor" style="visibility: hidden"
+                           id="name_add_table_dogovor"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_client">
+                    <input type="text" placeholder="ФИО Клиента" name="fio"><br>
+                    <input type="text" placeholder="Адрес клиента" name="addres"><br>
+                    <input type="text" placeholder="Телефон клиента" name="telf"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_client" style="visibility: hidden"
+                           id="name_add_table_client"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="predostav_uslug">
+                    <input type="text" placeholder="Номер сотрудника" name="number_work"><br>
+                    <input type="text" placeholder="Номер клиента" name="number_klient"><br>
+                    <input type="text" placeholder="Дата в формате yyyy-mm-dd" name="date_add"><br>
+                    <input type="text" placeholder="Сумма к оплате" name="summ"><br>
+                    <input type="text" placeholder="Комментарий" name="komment"><br>
+                    <input type="text" placeholder="Номер договора" name="number_dogovor"><br>
+                    <input type="text" placeholder="Код оператора" name="kod_operator"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_predostav_uslug" style="visibility: hidden"
+                           id="name_add_table_predostav_uslug"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_name_operator">
+                    <input type="text" placeholder="Наименование" name="name_oper"><br>
+                    <input type="text" placeholder="Код услуги" name="kode_uslugi"><br>
+                    <input type="text" placeholder="Код тарифа" name="kode_tarifa"><br>
+                    <input type="text" placeholder="Код услуги тарифа" name="kode_uslugi_tarifa"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_operator" style="visibility: hidden"
+                           id="name_add_table_operator"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_salon">
+                    <input type="text" placeholder="Адрес" name="address_salon"><br>
+                    <input type="text" placeholder="Район" name="raion_salona"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_salon" style="visibility: hidden"
+                           id="name_add_table_salon"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_sotrudnik">
+                    <input type="text" placeholder="ФИО" name="fio_worker"><br>
+                    <input type="text" placeholder="Дата рождения в формате yyyy-mm-dd" name="date_birth_worker"><br>
+                    <input type="text" placeholder="Номер салона" name="number_salon"><br>
+                    <input type="text" placeholder="Количество договоров" name="kolvo_dogovor"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_sotrudnik" style="visibility: hidden"
+                           id="name_add_table_sotrudnik"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_uslug_for_tarif">
+                    <input type="text" placeholder="Название" name="name_uslug"><br>
+                    <input type="text" placeholder="Количество" name="kolvo_uslug"><br>
+                    <input type="text" placeholder="Единица измерения" name="ed_izm"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_uslug_tarif" style="visibility: hidden"
+                           id="name_add_table_uslug_tarif"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_usluga">
+                    <input type="text" placeholder="Наименование" name="name_uslugi"><br>
+                    <input type="text" placeholder="Стоимость" name="cost"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_usluga" style="visibility: hidden"
+                           id="name_add_table_usluga"><br>
+                </div>
+            </form>
+            <form method="post" action="insert.php">
+                <div id="add_tarif">
+                    <input type="text" placeholder="Стоимость тарифа" name="cost_tarif"><br>
+                    <input type="text" placeholder="Наименование" name="name_tarif"><br>
+                    <input type="submit" value="Добавить">
+                    <input type="text" name="name_add_table_tarif" style="visibility: hidden"
+                           id="name_add_table_tarif"><br>
+                </div>
+            </form>
+            <button id="add_button" type="submit">Отобразить поля добавления</button>
+        </div>
+        <script>
+            document.getElementById('add_dogovor').style.visibility = 'hidden';
+            document.getElementById('add_client').style.visibility = 'hidden';
+            document.getElementById('predostav_uslug').style.visibility = 'hidden';
+            document.getElementById('add_name_operator').style.visibility = 'hidden';
+            document.getElementById('add_salon').style.visibility = 'hidden';
+            document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+            document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+            document.getElementById('add_usluga').style.visibility = 'hidden';
+            document.getElementById('add_tarif').style.visibility = 'hidden';
+
+            let a=document.getElementById('add_table').value;
+
+            var elt = document.getElementById('add_table');
+
+
+            document.getElementById('add_button').onclick=function () {
+
+                //alert (elt.options[elt.selectedIndex].text);
+                //alert(a);
+                if (elt.options[elt.selectedIndex].text=="Договор") {
+                    document.getElementById('name_add_table_dogovor').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_dogovor').style.visibility = 'visible';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                    document.getElementById('name_add_table').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                }
+                if (elt.options[elt.selectedIndex].text=="Клиент") {
+                    document.getElementById('name_add_table_client').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_client').style.visibility = 'visible';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                }
+                if (elt.options[elt.selectedIndex].text=="Предоставление услуг") {
+                    document.getElementById('name_add_table_predostav_uslug').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('predostav_uslug').style.visibility = 'visible';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                }
+                if (elt.options[elt.selectedIndex].text=="Операторы") {
+                    document.getElementById('name_add_table_operator').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_name_operator').style.visibility = 'visible';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                }
+                if (elt.options[elt.selectedIndex].text=="Салон") {
+                    document.getElementById('name_add_table_salon').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_salon').style.visibility = 'visible';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                }
+                if (elt.options[elt.selectedIndex].text=="Сотрудник") {
+                    document.getElementById('name_add_table_sotrudnik').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_sotrudnik').style.visibility = 'visible';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                }
+                if (elt.options[elt.selectedIndex].text=="Услуги для тарифа") {
+                    document.getElementById('name_add_table_uslug_tarif').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'visible';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                }
+                if (elt.options[elt.selectedIndex].text=="Услуга") {
+                    document.getElementById('name_add_table_usluga').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_usluga').style.visibility = 'visible';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                    document.getElementById('add_tarif').style.visibility = 'hidden';
+                }
+                if (elt.options[elt.selectedIndex].text=="Тариф") {
+                    document.getElementById('name_add_table_tarif').value = document.getElementById('add_table').options[elt.selectedIndex].value;
+                    document.getElementById('add_tarif').style.visibility = 'visible';
+                    document.getElementById('add_usluga').style.visibility = 'hidden';
+                    document.getElementById('add_uslug_for_tarif').style.visibility = 'hidden';
+                    document.getElementById('add_sotrudnik').style.visibility = 'hidden';
+                    document.getElementById('add_salon').style.visibility = 'hidden';
+                    document.getElementById('add_name_operator').style.visibility = 'hidden';
+                    document.getElementById('predostav_uslug').style.visibility = 'hidden';
+                    document.getElementById('add_dogovor').style.visibility = 'hidden';
+                    document.getElementById('add_client').style.visibility = 'hidden';
+                }
+
+            }
+        </script>
+
+
+    </div>
+    <style>
+        #predostav_uslug {
+            float: right;
+            position: absolute;
+            margin-top: -41px;
+            margin-left: 500px;
+        }
+        #add_name_operator {
+            float: right;
+            position: absolute;
+            margin-top: -41px;
+            margin-left: 500px;
+        }
+        #add_salon {
+            float: right;
+            position: absolute;
+            margin-top: -41px;
+            margin-left: 500px;
+        }
+        #add_sotrudnik {
+            float: right;
+            position: absolute;
+            margin-top: -41px;
+            margin-left: 500px;
+        }
+        #add_uslug_for_tarif {
+            float: right;
+            position: absolute;
+            margin-top: -41px;
+            margin-left: 500px;
+        }
+        #add_usluga {
+            float: right;
+            position: absolute;
+            margin-top: -41px;
+            margin-left: 500px;
+        }
+        #add_tarif {
+            float: right;
+            position: absolute;
+            margin-top: -41px;
+            margin-left: 500px;
+        }
+    </style>
+    <div id="footer">
+
+    </div>
+</div>
+
+</body>
+</html>
