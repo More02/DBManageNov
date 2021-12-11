@@ -28,8 +28,8 @@
                 <select name="add_table" id="add_table">
                     <option value="Договор">Договор</option>
                     <option value="Клиент">Клиент</option>
-                    <option value="Операторы">Операторы</option>
                     <option value="Предоставление_услуг">Предоставление услуг</option>
+                    <option value="Операторы">Операторы</option>
                     <option value="Салон">Салон</option>
                     <option value="Сотрудник">Сотрудник</option>
                     <option value="Услуги_для_тарифа">Услуги для тарифа</option>

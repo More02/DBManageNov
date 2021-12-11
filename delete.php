@@ -18,28 +18,27 @@ if (!empty($_POST['name_delete_table_dogovor'])) {
 if (!empty($_POST['name_delete_table_client'])) {
     $name_table = $_POST['name_delete_table_client'];
 }
-if (!empty($_POST['name_delete_table_function'])) {
-    $name_table = $_POST['name_delete_table_function'];
+if (!empty($_POST['name_delete_table_predostav_uslug'])) {
+    $name_table = $_POST['name_delete_table_predostav_uslug'];
 }
-if (!empty($_POST['name_delete_table_status_proj'])) {
-    $name_table = $_POST['name_delete_table_status_proj'];
+if (!empty($_POST['name_delete_table_operator'])) {
+    $name_table = $_POST['name_delete_table_operator'];
 }
-if (!empty($_POST['name_delete_table_status_nabor_function'])) {
-    $name_table = $_POST['name_delete_table_status_nabor_function'];
+if (!empty($_POST['name_delete_table_salon'])) {
+    $name_table = $_POST['name_delete_table_salon'];
 }
-if (!empty($_POST['name_delete_table_otdel'])) {
-    $name_table = $_POST['name_delete_table_otdel'];
+if (!empty($_POST['name_delete_table_sotrudnik'])) {
+    $name_table = $_POST['name_delete_table_sotrudnik'];
 }
-if (!empty($_POST['name_delete_table_rabotnik'])) {
-    $name_table = $_POST['name_delete_table_rabotnik'];
+if (!empty($_POST['name_delete_table_uslug_tarif'])) {
+    $name_table = $_POST['name_delete_table_uslug_tarif'];
 }
-if (!empty($_POST['name_delete_spec'])) {
-    $name_table = $_POST['name_delete_spec'];
+if (!empty($_POST['name_delete_table_usluga'])) {
+    $name_table = $_POST['name_delete_table_usluga'];
 }
-if (!empty($_POST['name_delete_table_tech_zad'])) {
-    $name_table = $_POST['name_delete_table_tech_zad'];
+if (!empty($_POST['name_delete_table_tarif'])) {
+    $name_table = $_POST['name_delete_table_tarif'];
 }
-
 
 
 if ($name_table=='Договор') {
@@ -48,44 +47,39 @@ if ($name_table=='Договор') {
 }
 if ($name_table=='Клиент') {
     $number_client = $_POST['number_client'];
-
     $sql = "DELETE FROM `клиент` WHERE `Номер_клиента`=$number_client";
 }
-if ($name_table=='Вид_функционала') {
-    $number_function = $_POST['number_function'];
-
-    $sql = "DELETE FROM `вид_функционала` WHERE `Номер_функции`=$number_function";
+if ($name_table=='Предоставление_услуг') {
+    $name_predostav_uclug = $_POST['name_predostav_uclug'];
+    $sql = "DELETE FROM `предоставление_услуг` WHERE `Номер_предоставления_услуг`=
+'$name_predostav_uclug'";
 }
-if ($name_table=='Готовность_проекта') {
-    $number_status_proj = $_POST['number_status_proj'];
-
-    $sql = "DELETE FROM `готовность_проекта` WHERE `Номер_статуса_готовности_проекта`=$number_status_proj";
+if ($name_table=='Операторы') {
+    $kode_operator = $_POST['kode_operator'];
+    $sql = "DELETE FROM `операторы` WHERE `Код_оператора`=$kode_operator";
 }
-if ($name_table=='Набор_функционала') {
-    $number_nabor_func = $_POST['number_nabor_func'];
-
-    $sql = "DELETE FROM `набор_функционала` WHERE `Номер_набора_функционала`=$number_nabor_func";
+if ($name_table=='Салон') {
+    $number_salon = $_POST['number_salon'];
+    $sql = "DELETE FROM `салон` WHERE `Номер_салона`=$number_salon";
 }
-if ($name_table=='Отдел') {
-    $number_otdel = $_POST['number_otdel'];
-
-    $sql = "DELETE FROM `отдел` WHERE `Номер_отдела`=$number_otdel";
+if ($name_table=='Сотрудник') {
+    $number_sotrudnik = $_POST['number_sotrudnik'];
+    $sql = "DELETE FROM `сотрудник` WHERE `Номер_сотрудника`=$number_sotrudnik";
 }
-if ($name_table=='Работник') {
-    $number_work = $_POST['number_work'];
-
-    $sql = "DELETE FROM `работник` WHERE `Номер_работника`=$number_work";
+if ($name_table=='Услуги_для_тарифа') {
+    $kode_uslugi_tarifa = $_POST['kode_uslugi_tarifa'];
+    $sql = "DELETE FROM `услуги_для_тарифа` WHERE `Код_услуги_тарифа`=$kode_uslugi_tarifa";
 }
-if ($name_table=='Специализация') {
-    $number_spec = $_POST['number_spec'];
 
-    $sql = "DELETE FROM `специализация` WHERE `Номер_специализации`=$number_spec";
+if ($name_table=='Услуга') {
+    $kode_uslugi = $_POST['kode_uslugi'];
+    $sql = "DELETE FROM `услуга` WHERE `Код_услуги`=$kode_uslugi";
 }
-if ($name_table=='Техническое_задание') {
-    $number_tz = $_POST['number_tz'];
+if ($name_table=='Тариф') {
+    $kode_tarif = $_POST['kode_tarif'];
+    $sql = "DELETE FROM `тариф` WHERE `Код_тарифа`=$kode_tarif";
+}
 
-    $sql = "DELETE FROM `техническое_задание` WHERE `Номер_технического_задания`=$number_tz";
-}
 
 
 
