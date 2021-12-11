@@ -16,7 +16,7 @@ if (array_keys($_POST['type'])[0]=='login_butt') {
         $user = $db->getUserByEmailAndPassword($email, $password);
 
         if ($user != false) {
-            include('C:\OpenServer\domains\localhost\BDManageNov\index_add.html');
+            include('index_add.html');
             echo json_encode($response);
         } else {
             // user is not found with the credentials

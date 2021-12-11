@@ -24,7 +24,7 @@ if (array_keys($_POST['type'])[0]=='register_butt') {
             // create a new user
             $user = $db->storeUser($name, $email, $password);
             if ($user) {
-                include('C:\OpenServer\domains\localhost\BD_Proj\index_add.html');
+                include('index_add.html');
             } else {
                 // user failed to store
                 $response["error"] = TRUE;
@@ -39,7 +39,7 @@ if (array_keys($_POST['type'])[0]=='register_butt') {
     }
 }
 if (array_keys($_POST['type'])[0]=='login_butt') {
-    include('C:\OpenServer\domains\localhost\BD_Proj\login.html');
+    include('login.html');
 }
 
 ?>
